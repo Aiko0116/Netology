@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netology</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 90px;
+      margin-right: 10px;
+    }
+    h1.app-name {
+      font-size: 30px;
+      margin: 0;
+      margin-right: 10px;
+    }
+    .menu {
+      background-color: #153448;
+      color: #fff;
+      width: 300px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .menu .top, .menu .bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      width: 100%;
+    }
+    .menu button {
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-size: 18px;
+      width: 100%;
+      text-align: left;
+      display: flex;
+      align-items: center;
+    }
+    .menu button i {
+      margin-right: 10px;
+    }
+    .menu button:hover {
+      background-color: #0d2536;
+    }
+    .content {
+      margin-left: 300px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <div class="top">
+      <div class="logo">
+        <img src="logo.png" alt="Company Logo">
+        <h1 class="app-name">Netology</h1>
+      </div>
+      <a href="custom.html"><button><i class="fas fa-vr-cardboard"></i> Simulation</button></a>
+      <a href="explore.html"><button><i class="fas fa-compass"></i> Exploration</button></a>
+      <button><i class="fas fa-user"></i> Account</button>
+    </div>
+    <div class="bottom">
+      <button><i class="fas fa-question-circle"></i> Help</button>
+      <a href="index.html"><button><i class="fas fa-sign-out-alt"></i> Sign Out</button></a>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>Welcome to Netology</h2>
+    <p>This is the main content area where you can provide information about your app, its features, and anything else you’d like to showcase.</p>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

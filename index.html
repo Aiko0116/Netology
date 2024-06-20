@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Netology</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      background-color: #153448;
+      color: #fff;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 100px;
+      margin-right: 10px;
+    }
+    h1.app-name {
+      font-size: 18px;
+      margin: 0;
+    }
+    .login-button {
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      padding: 20px;
+      cursor: pointer;
+      font-size: 18px;
+      margin-right: 25px;
+    }
+    .login-button:hover {
+      text-decoration: underline;
+    }
+    .container {
+      width: 100vw;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 100px;
+    }
+    .left-block {
+      width: 100%;
+      padding-right: 200px;
+    }
+    .right-block {
+      width: 100%;
+    }
+    .block {
+      width: 100%;
+      padding-left: 10px;
+      background-color: #fff;
+      margin-bottom: 20px;
+    }
+    .title {
+      font-family: matter, sans-serif;
+      font-size: 3.75rem;
+      font-style: normal;
+      font-weight: 570;
+      letter-spacing: -.01em;
+      line-height: 4.125rem;
+      margin: 0;
+    }
+    .description {
+      line-height: 1.6;
+      font-size: 24px;
+      color: black;
+    }
+    .carousel-item img {
+      width: 100%;
+      height: 400px;
+    }
+    .title-text {
+      text-align: center;
+      font-size: 30px;
+      margin-top: 20px;
+    }
+    .custom-blue {
+      background-color: #153448;
+      color: #fff;
+      padding: 20px;
+    }
+    .custom-container {
+      margin: auto 10px;
+      margin-top: 50px;
+    }
+    .custom-block {
+      margin-top: 20px;
+    }
+    .left-section {
+      width: 100%;
+    }
+    .right-section {
+      width: 100%;
+    }
+    .right-section img {
+      max-width: 100%;
+      height: auto;
+      max-height: 250px;
+      border-style: groove;
+      border-color: #153448;
+    }
+    .footer {
+      background-color: #454545;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      bottom: 0;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .footer a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .social-media {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .social-media img {
+      width: 50px;
+      height: 50px;
+      margin: 0 10px;
+    }
+    .signup-button {
+      display: inline-block;
+      background-color: #153448;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 18px;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .signup-button:hover {
+      background-color: #0d2536;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <img src="logo.png" alt="Company Logo">
+    <h1 class="app-name">Netology</h1>
+  </div>
+  <a href="login.html" class="login-button">Log In</a>
+</div>
+
+<div class="container">
+  <div class="left-block block">
+    <h2 class="title">Responsible simulator that ensures your topology.</h2>
+    <p class="description">Netology is a new simulation tool that simplifies the process of building network topology. Assisting users in building their network topology design with ease.</p>
+    <a href="signup.html" class="signup-button">Sign Up, It's Free</a>
+  </div>
+ <div class="right-block block">
+    <video width="100%" height="500" controls>
+      <source src="video/intro.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
+
+<h2 class="title-text">Introduction</h2>
+
+<div class="custom-container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="custom-block custom-blue">
+        <h3>Automation</h3>
+        <p>Automation describes a wide range of technologies that reduce human intervention in processes, mainly by predetermining decision criteria, subprocess relationships, and related actions, as well as embodying those predeterminations in machines.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="custom-block">
+        <h3>Simulation</h3>
+        <p>A network simulator is a software program that can predict the performance of a computer network or a wireless communication network. Since communication networks have become too complex for traditional analytical methods to provide an accurate understanding of system behavior, network simulators are used.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="custom-block custom-blue">
+        <h3>Open Source</h3>
+        <p>Open source is source code that is made freely available for possible modification and redistribution. Products include permission to use the source code, design documents, or content of the product. The open-source model is a decentralized software development model that encourages open collaboration.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="custom-block">
+        <h3>Network Topology</h3>
+        <p>Network topology is the arrangement of the various links, nodes, etc. of a network and many may be depicted physical topology is the placement including device location and cable installation, while logical topology illustrates how data flows within a network regardless of its physical design.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="custom-block custom-blue">
+        <h3>Floor Plan</h3>
+        <p>Floor plans are scale drawings that show the relationship between rooms, spaces and physical features viewed from above. They provide a way to visualize how people will move through the space.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="custom-block">
+        <h3>Explore</h3>
+        <p>It is important because it helps build professional relationships, opens doors to new opportunities, and facilitates the exchange of ideas and best practices. It also aids in career development, personal growth, and business success.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 class="title-text">Network Topology</h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 left-section">
+      <div class="custom-block">
+        <h3>Bus Topology</h3>
+        <p>In the bus network topology, every node is connected in series along a single cable. This arrangement is found today primarily in cable broadband distribution networks.</p>
+      </div>
+    </div>
+    <div class="col-md-6 right-section">
+      <div class="custom-block">
+        <img src="topology/topology1.jpg" alt="Bus Topology">
+      </div>
+    </div>
+    <div class="col-md-6 left-section">
+      <div class="custom-block">
+        <h3>Ring Topology</h3>
+        <p>In the ring network topology, the nodes are connected in a closed-loop configuration. Some rings pass data in one direction only, while others are capable of transmission in both directions. These bidirectional ring networks are more resilient than bus networks since traffic can reach a node by moving in either direction. Metro networks based on Synchronous Optical Network technology are the primary example of ring networks.</p>
+      </div>
+    </div>
+    <div class="col-md-6 right-section">
+      <div class="custom-block">
+        <img src="topology/topology2.jpg" alt="Ring Topology">
+      </div>
+    </div>
+    <div class="col-md-6 left-section">
+      <div class="custom-block">
+        <h3>Star Topology</h3>
+        <p>In the star network topology, a central device connects to all other nodes through a central hub. Switched local area networks based on Ethernet switches and most wired home and office networks have a physical star topology.</p>
+      </div>
+    </div>
+    <div class="col-md-6 right-section">
+      <div class="custom-block">
+        <img src="topology/topology3.jpg" alt="Star Topology">
+      </div>
+    </div>
+    <div class="col-md-6 left-section">
+      <div class="custom-block">
+        <h3>Mesh Topology</h3>
+        <p>The mesh network topology links nodes with connections so that multiple paths between at least some points of the network are available. A network is considered to be fully meshed if all nodes are directly connected to all other nodes and partially meshed if only some nodes have multiple connections to others. Meshing multiple paths increases resiliency but also increases cost. However, more space is needed for dedicated links.</p>
+      </div>
+    </div>
+    <div class="col-md-6 right-section">
+      <div class="custom-block">
+        <img src="topology/topology4.jpg" alt="Mesh Topology">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <div class="social-media">
+    <a href="#"><img src="img/social/fb.png" alt="Facebook"></a>
+    <a href="#"><img src="img/social/instagram.png" alt="Instagram"></a>
+    <a href="#"><img src="img/social/x.png" alt="Twitter"></a>
+  </div>
+  <a href="#">Terms & Conditions</a>
+  <a href="#">Privacy Policy</a>
+  <a href="#">Cookies Policy</a>
+  <a href="#">Data Protection</a>
+  <a href="#">Accessibility</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('.carousel').carousel({
+      interval: 2000 // Change slides every 2 seconds (2000 milliseconds)
+    });
+  });
+</script>
+</body>
+</html>

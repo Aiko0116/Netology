@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+    .container {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+    }
+    .left-side {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #fff;
+      padding: 20px;
+      max-width: 50%;
+    }
+    .right-side {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #153448;
+      padding: 20px;
+      max-width: 50%;
+    }
+    .login-form {
+      padding-top: 120px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-control {
+      height: 60px;
+      border-radius: 20px;
+    }
+    .form-group:last-child {
+      margin-bottom: 0;
+    }
+    .input-control {
+      margin-right: 300px;
+    }
+    .btn-primary {
+      background-color: #153448;
+      border-color: #153448;
+      height: 50px;
+      width: 150px;
+      margin-left: 120px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      border-radius: 100px;
+      font-size: 18px;
+    }
+    .btn-primary:hover {
+      background-color: #3C5B6F;
+      border-color: #3C5B6F;
+    }
+    .image-container {
+      text-align: center;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+    .signup-link {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .stay-connected-text {
+      color: #fff;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+    .mb-4 {
+      margin-right: 300px;
+    }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      width: 80px;
+      height: 50px;
+      background-color: #153448;
+      border: solid 2px;
+      outline: none;
+      cursor: pointer;
+      font-size: 20px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i></a>
+  <div class="left-side">
+    <form class="login-form">
+      <h2 class="mb-4">Sign In</h2>
+      <h5 class="input-control">Username:</h5>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Username" required>
+      </div>
+      <h5 class="input-control">Password:</h5>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" required>
+      </div>
+      <a type="submit" href="new.html" class="btn btn-primary btn-block">Sign In</a>
+      <div class="signup-link">
+        Don't have an account? <a href="signup.html" style="color: #000000;"><u>Sign Up Here</u></a>
+      </div>
+    </form>
+  </div>
+  <div class="right-side">
+    <div class="image-container">
+      <img src="logo.png" alt="Image">
+    </div>
+    <div class="stay-connected-text">Let’s stay connected.</div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

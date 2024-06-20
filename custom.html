@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #153448;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 50px; /* Adjusted height for better alignment */
+            margin-right: 100px;
+            margin-left: 20px;
+        }
+        .back-button {
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            text-decoration: underline; /* Added underline on hover for better visual indication */
+        }
+        .container {
+            margin-top: 80px; /* Adjust the margin to provide space below the header */
+            display: flex;
+            justify-content: space-between;
+            padding: 35px 150px;
+            background-color: #f2f2f2; /* Background color for the container block */
+        }
+        .left-side,
+        .right-side {
+            width: 45%; /* Adjust the width of each side as needed */
+            padding: 100px;
+            background-color: #fff; /* Background color for each side */
+        }
+        .left-side input {
+            display: block;
+            width: calc(100% - 22px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .left-side button {
+            background-color: #153448;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 20px;
+            margin-left: 90px;
+        }
+        .left-side button:hover {
+            background-color: #0d2536;
+        }
+        .autonomous {
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: 750px;
+            text-decoration: none;
+        }
+        .autonomous:hover {
+            text-decoration: none;
+        }
+        .right-side img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto; /* Center the image */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="Help.png">
+        </div>
+        <a href="#" class="autonomous">Automatic Design</a>
+        <a href="new.html" class="back-button">Back</a>
+    </div>
+
+    <div class="container">
+        <div class="left-side">
+            <form id="project-form">
+                <label for="project-name">Project Name:</label>
+                <input type="text" id="project-name" placeholder="Enter project name" required>
+                <label for="width">Width (ft):</label>
+                <input type="number" id="width" placeholder="Enter width" required>
+                <label for="height">Height (ft):</label>
+                <input type="number" id="height" placeholder="Enter height" required>
+                <button type="submit">Create</button>
+            </form>
+        </div>
+        <div class="right-side">
+            <h3>Standard Room Size</h3>
+            <img src="aa.png" alt="Standard Room Size">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('project-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the default way
+
+            // Get the width and height values
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+
+            // Redirect to simulation.html with width and height as URL parameters
+            window.location.href = `simulation.html?width=${width}&height=${height}`;
+        });
+    </script>
+</body>
+</html>

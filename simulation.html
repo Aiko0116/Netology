@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simulation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #153448;
+            color: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 60px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        h1.app-name {
+            font-size: 18px;
+            margin: 0;
+            font-weight: 200;
+        }
+        .back-button {
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-right: 20px;
+            text-decoration: none;
+        }
+        .back-button:hover {
+            text-decoration: underline;
+        }
+        .container {
+            margin-top: 80px;
+            padding: 20px;
+            position: relative;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+            border: 1px solid #000;
+            position: relative;
+        }
+        .symbols {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border: 3px solid black;
+            border-radius: 20px;
+            position: fixed;
+            top: 30%;
+            right: 0;
+        }
+        .symbol-button {
+            margin: 10px;
+            cursor: pointer;
+        }
+        .symbol-button img {
+            height: 30px;
+        }
+        .dialog {
+            display: none;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            border: 1px solid #ccc;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .dialog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .grid-button {
+            padding: 1spx;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            text-align: center;
+        }
+        .grid-button img {
+            width: 40px;
+            height: 40px;
+        }
+        .grid-button:hover {
+            background-color: #e0e0e0;
+        }
+        .dialog-1x1 .dialog-grid {
+            grid-template-columns: 1fr;
+        }
+        .device {
+            position: absolute;
+            padding: 10px;
+            cursor: grab;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .device img {
+            width: 50px;
+            height: 50px;
+        }
+        .ip-label {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="Help.png" alt="Help Logo">
+        </div>
+        <a href="custom.html" class="back-button">Back</a>
+    </div>
+
+    <div class="container">
+        <canvas id="simulation-canvas"></canvas>
+        <div class="symbols">
+            <!-- First symbol button -->
+            <div class="symbol-button" onclick="toggleDialog('dialog1x1')">
+                <img src="symbol1.png" alt="Symbol 1">
+            </div>
+            <!-- Second symbol button -->
+            <div class="symbol-button" onclick="toggleDialog('dialog3x3')">
+                <img src="symbol2.png" alt="Symbol 2">
+            </div>
+            <!-- Third symbol button -->
+            <div class="symbol-button" onclick="toggleDialog('summary-dialog')">
+                <img src="symbol3.png" alt="Symbol 3">
+            </div>
+        </div>
+        <div id="dialog3x3" class="dialog" style="top: 60%; left: 80%; position: fixed;">
+            <div class="dialog-grid">
+                <div class="grid-button" onclick="addDevice('PC', 'Devices/pc.png')">
+                    <img src="Devices/pc.png" alt="PC">
+                    <div>PC</div>
+                </div>
+                <div class="grid-button" onclick="addDevice('Laptop', 'Devices/laptop.png')">
+                    <img src="Devices/laptop.png" alt="Laptop">
+                    <div>Laptop</div>
+                </div>
+                <div class="grid-button" onclick="addDevice('Mobile Phone', 'Devices/mobile.png')">
+                    <img src="Devices/mobile.png" alt="Mobile Phone">
+                    <div>Mobile Phone</div>
+                </div>
+                <div class="grid-button" onclick="addDevice('Router', 'Devices/router.png')">
+                    <img src="Devices/router.png" alt="Router">
+                    <div>Router</div>
+                </div>
+                <div class="grid-button" onclick="addDevice('Switch', 'Devices/switch.png')">
+                    <img src="Devices/switch.png" alt="Switch">
+                    <div>Switch</div>
+                </div>
+                <div class="grid-button" onclick="addDevice('Hub', 'Devices/hub.png')">
+                    <img src="Devices/hub.png" alt="Hub">
+                    <div>Hub</div>
+                </div>
+                <div class="grid-button" onclick="activateWiredConnectionMode()">
+                    <img src="connection/wired.png" alt="Wired">
+                    <div>Wired</div>
+                </div>
+                <!-- Wireless button -->
+                <div class="grid-button" onclick="addConnection('Wireless')">
+                    <img src="connection/wireless.png" alt="Wireless">
+                    <div>Wireless</div>
+                </div>
+            </div>
+        </div>
+        <!-- 1x1 Dialog box -->
+        <div id="dialog1x1" class="dialog" style="top: 10%; left: 82%;">
+            <div class="dialog-grid">
+                <div class="grid-button">Button</div>
+            </div>
+        </div>
+        <!-- Summary dialog box -->
+        <div id="summary-dialog" class="dialog" style="top: 35%; left: 10%; position: fixed;">
+            <h2>Summary</h2>
+            <div id="total-devices">Total Devices: 0</div>
+            <div id="wires-length">Wires Length: 0</div>
+            <div id="room-size">Room Size: 0</div>
+            <div id="status">Status: Inactive</div>
+        </div>
+    </div>
+
+    <script>
+        let ipCounter = 1;
+        let selectedDeviceForConnection = null;
+        let connectionMode = false;
+
+        function activateConnectionMode() {
+            connectionMode = true;
+        }
+
+        function deactivateConnectionMode() {
+            connectionMode = false;
+        }
+
+        function addConnectionListenersToDevices() {
+            const devices = document.querySelectorAll('.device');
+            devices.forEach(device => {
+                device.addEventListener('click', handleDeviceClickForConnection);
+            });
+        }
+
+        function handleDeviceClickForConnection(event) {
+            const clickedDevice = event.currentTarget;
+            if (connectionMode) {
+                if (!selectedDeviceForConnection) {
+                    selectedDeviceForConnection = clickedDevice;
+                } else {
+                    drawConnection(selectedDeviceForConnection, clickedDevice);
+                    selectedDeviceForConnection = null;
+                    deactivateConnectionMode();
+                }
+            }
+        }
+
+        function drawConnection(device1, device2) {
+            const canvas = document.getElementById('simulation-canvas');
+            const ctx = canvas.getContext('2d');
+
+            const device1Rect = device1.getBoundingClientRect();
+            const device2Rect = device2.getBoundingClientRect();
+
+            const startX = device1Rect.left + device1Rect.width / 2 - canvas.getBoundingClientRect().left;
+            const startY = device1Rect.top + device1Rect.height / 2 - canvas.getBoundingClientRect().top;
+            const endX = device2Rect.left + device2Rect.width / 2 - canvas.getBoundingClientRect().left;
+            const endY = device2Rect.top + device2Rect.height / 2 - canvas.getBoundingClientRect().top;
+
+            ctx.beginPath();
+            ctx.moveTo(startX, startY);
+            ctx.lineTo(endX, endY);
+            ctx.strokeStyle = '#000'; // Black color
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+
+        function activateWiredConnectionMode() {
+            activateConnectionMode();
+            addConnectionListenersToDevices();
+        }
+
+        function cancelConnection() {
+            selectedDeviceForConnection = null;
+            deactivateConnectionMode();
+        }
+
+        // Your existing JavaScript code here...
+        // Function to get URL parameters
+        function getURLParameter(name) {
+            return new URLSearchParams(window.location.search).get(name);
+        }
+
+        // Get width and height from URL parameters
+        const width = getURLParameter('width');
+        const height = getURLParameter('height');
+
+        // Set canvas size
+        const canvas = document.getElementById('simulation-canvas');
+        if (width && height) {
+            canvas.width = width * 10;
+            canvas.height = height * 10;
+        }
+
+        // Function to toggle the dialog boxes
+        function toggleDialog(dialogId) {
+            const dialog = document.getElementById(dialogId);
+            if (dialog.style.display === 'none' || dialog.style.display === '') {
+                document.querySelectorAll('.dialog').forEach(d => d.style.display = 'none'); // Hide all dialogs
+                dialog.style.display = 'block';
+                if (dialogId === 'summary-dialog') {
+                    updateSummary();
+                }
+            } else {
+                dialog.style.display = 'none';
+            }
+        }
+
+        // Function to update summary data
+        function updateSummary() {
+            const totalDevices = document.querySelectorAll('.device').length;
+            const wiresLength = 50;
+            const roomSize = '10x10';
+            const status = 'Active';
+
+            document.getElementById('total-devices').textContent = 'Total Devices: ' + totalDevices;
+            document.getElementById('wires-length').textContent = 'Wires Length: ' + wiresLength + ' ft';
+            document.getElementById('room-size').textContent = 'Room Size: ' + roomSize + ' ft²';
+            document.getElementById('status').textContent = 'Status: ' + status;
+        }
+
+        // Function to add a device to the canvas
+        function addDevice(type, imgSrc) {
+            const device = document.createElement('div');
+            device.className = 'device';
+
+            const ipLabel = document.createElement('div');
+            ipLabel.className = 'ip-label';
+            ipLabel.textContent = generateIPAddress();
+
+            const deviceImg = document.createElement('img');
+            deviceImg.src = imgSrc;
+            deviceImg.alt = type;
+
+            device.appendChild(ipLabel);
+            device.appendChild(deviceImg);
+
+            device.style.left = `${Math.random() * (canvas.width - 100)}px`;
+            device.style.top = `${Math.random() * (canvas.height - 100)}px`;
+            canvas.parentElement.appendChild(device);
+
+            makeMovable(device);
+            updateSummary();
+        }
+
+        // Function to generate a random IP address
+        function generateIPAddress() {
+            const ip = `192.168.1.${ipCounter}`;
+            ipCounter++;
+            return ip;
+        }
+
+        // Function to make an element movable
+        function makeMovable(element) {
+            let isDragging = false;
+            let offsetX, offsetY;
+
+            element.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                offsetX = e.offsetX;
+                offsetY = e.offsetY;
+                element.style.zIndex = 1000;
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    element.style.left = `${e.pageX - offsetX}px`;
+                    element.style.top = `${e.pageY - offsetY}px`;
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                element.style.zIndex = '';
+            });
+        }
+
+    </script>
+</body>
+</html>
